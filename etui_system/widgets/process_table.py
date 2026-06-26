@@ -89,25 +89,8 @@ class ProcessTable(DataTable):
         self._redraw()
 
     def selected_pid(self) -> int | None:
-        try:
-            row_key = self.get_row_at(self.cursor_row)
-        except Exception:
-            return None
-        # row_key is the value in column 0 (PID string)
-        try:
-            cell = self.get_cell_at(self.cursor_coordinate)
-            return None  # fallback handled below
-        except Exception:
-            pass
-        try:
-            return int(self.get_row_at(self.cursor_row)[0])
-        except Exception:
-            return None
-
-    def selected_pid(self) -> int | None:  # noqa: F811 — intentional redefinition
         """Return the PID of the currently highlighted row, or None."""
         try:
-            # cursor_row is the DataTable row index
             row = self.get_row_at(self.cursor_row)
             return int(row[0])
         except Exception:
