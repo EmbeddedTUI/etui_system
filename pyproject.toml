@@ -1,0 +1,28 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "etui-system"
+version = "0.1.0"
+description = "htop-style system monitor tab plugin for etui"
+requires-python = ">=3.13,<3.15"
+dependencies = [
+    "etui>=0.3.0",
+    "textual>=8.1.1",
+    "psutil>=6.0",
+]
+authors = [
+    {name = "Pawel Wodnicki", email = "pawel.wodnicki@live.com"},
+]
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.entry-points."etui.tabs"]
+system = "etui_system:SystemTabPlugin"
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.build]
+includes = ["etui_system/"]
